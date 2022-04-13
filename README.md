@@ -4,27 +4,27 @@ Performs a census of a cluster’s nodes, scores the cluster out of 100 for dive
 This asks cluster nodes to self-report aspects of their software and hardware configuration, such as:
 
 ## type
-Processor maker
-Processor model
-RAM generation
-SSL library used
-OS type
-Kernel version
-OS version
+* Processor maker
+* Processor model
+* RAM generation
+* SSL library used
+* OS type
+* Kernel version
+* OS version
 
 ## capacity
-RAM capacity
-Disk capacity
+* RAM capacity
+* Disk capacity
 
 ## reliability
-Is the RAM ECC?
-How long have the components been, or otherwise likely been, in operation?
-System uptime
-App uptime
+* Is the RAM ECC?
+* How long have the components been, or otherwise likely been, in operation?
+* System uptime
+* App uptime
 
 ## security
-Is the processor patched for Meltdown/Spectre?
-Are management engines blocked off
+* Is the processor patched for Meltdown/Spectre?
+* Are management engines blocked off
 
 ### Notes
 
