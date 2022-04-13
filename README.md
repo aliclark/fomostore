@@ -2,7 +2,7 @@
 
 A master-master node cluster which replicates data.
 
-A write is considered successful if k+1 nodes have accepted the data in memory, where k is maximum simultaneous failures.
+A write is considered successful if k+1 nodes have accepted the data in memory, where k is maximum simultaneous failures. The writer itself is included in counting of maximum simultaneous failures.
 
 A read is considered valid if 1 node has the value, plus k nodes are either unresponsive to read requests (they are failed or re-synchronizing), or have the value present.
 
