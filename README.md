@@ -4,6 +4,8 @@ A master-master node cluster which replicates data.
 
 A write is considered successful if k+1 nodes have accepted the data in memory, where k is maximum simultaneous failures.
 
+A read is considered valid if 1 node has the value, plus k nodes are either unresponsive to read requests (they are failed or re-synchronizing), or have the value present.
+
 fomostore is intended to be simple and implemented several times with diverging methods, so that a heterogenous cluster has minimal chances for simultaneous failure,
 and thus can more realistically accept a write without having sync'd the data to disk.
 
