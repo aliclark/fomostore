@@ -1,37 +1,15 @@
-# sensibility
-Performs a census of a cluster’s nodes, scores the cluster out of 100 for diverseness
+# fomostore
 
-This asks cluster nodes to self-report aspects of their software and hardware configuration, such as:
+A master-master node cluster which replicates data.
 
-## type
-* Processor maker
-* Processor model
-* RAM generation
-* SSL library used
-* OS type
-* Kernel version
-* OS version
+A write is considered successful if k+1 nodes have accepted the data in memory, where k is maximum simultaneous failures.
 
-## capacity
-* RAM capacity
-* Disk capacity
+fomostore is intended to be simple and implemented several times with diverging methods, so that a heterogenous cluster has minimal chances for simultaneous failure,
+and thus can more realistically accept a write without having sync'd the data to disk.
 
-## reliability
-* Is the RAM ECC?
-* How long have the components been, or otherwise likely been, in operation?
-* System uptime
-* App uptime
+A related project [[aliclark/sensibility]] is intended to help understand how diverse a cluster's makeup is.
 
-## security
-* Is the processor patched for Meltdown/Spectre?
-* Are management engines blocked off
+This distributed system is intended to be used as a building block, along with vanilla Raft, for building a distributed system.
 
-### Notes
-
-For type and capacity, newer and more is not necessarily better since it would be generally preferable for nodes to reach their performance or size limits and varying times from each other.
-
-Security is generally preferable to keep up-to-date as possible since there may be latent issues or simply trustedness, where compromise of one node can lead to loss of the other nodes. If the other aspects are as disparate as possible then security fixes themselves will be different, so less likely to suffer the same kinds of reliabilty failures.
-
-Caveat, it is best to stagger patching times a little.
-
-The polling software should run and query at very different t8mes on each node to limit the possibility of causing failure across multiple nodes at the same time.
+Run your application code in duplicate on nodes in 2 or more availability zones (ensure that all effectful operations are idempotent and at-most-once),
+and use Raft to help decide what to do next, based on the data present in fomostore.
