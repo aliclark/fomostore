@@ -7,7 +7,7 @@ A write is considered successful if k+1 nodes have accepted the data in memory, 
 fomostore is intended to be simple and implemented several times with diverging methods, so that a heterogenous cluster has minimal chances for simultaneous failure,
 and thus can more realistically accept a write without having sync'd the data to disk.
 
-A related project [aliclark/sensibility]() is intended to help understand how diverse a cluster's makeup is.
+A related project [https://github.com/aliclark/sensibility]() is intended to help understand how diverse a cluster's makeup is.
 
 This distributed system is intended to be used as a building block, along with vanilla Raft, for building a distributed system.
 
